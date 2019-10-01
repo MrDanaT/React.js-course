@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { person as Person } from './Person/Person';
 
+// Stateful-, smart-, container component
 class App extends Component {
   state = {
     persons: [

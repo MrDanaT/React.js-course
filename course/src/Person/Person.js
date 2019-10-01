@@ -1,5 +1,6 @@
 import React from 'react';
 
+// Stateless component, ook wel dumb component genoemd aangezien ze iets presenteren, iets outputten & geen interne logica hebben.
 export const person = (props) => {
     return (
    <div>
