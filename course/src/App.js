@@ -14,21 +14,29 @@ class App extends Component {
     showPersons: false
   };
 
-  deletePersonHandler = (inputIndex) => {
+  deletePersonHandler = (param) => {
     // const persons = this.state.persons.slice(); // Copies array.
     const persons = [...this.state.persons];
-    persons.splice(inputIndex, 1);
+    persons.splice(param, 1);
     this.setState({ persons: persons })
   }
 
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: 'Max', age: 28 },
-        { name: event.target.value, age: 29 },
-        { name: 'Stephanie', age: 27 }
-      ]
-    })
+  nameChangedHandler = (event, id) => {
+    const personIdx = this.state.persons.find(el => {
+      return el.id === id
+    });
+
+    const person = { ...this.state.persons[personIdx] };
+    // const person = Object.assign({}, this.state.persons[personIdx]);
+
+    person.name = event.target.value;
+
+    // const persons = [...this.state.persons];
+    const persons = this.state.persons.slice();
+
+    persons[personIdx] = person;
+
+    this.setState({ persons: persons })
   }
 
   togglePersonHandler = () => {
@@ -54,7 +62,8 @@ class App extends Component {
               name={person.name}
               age={person.age}
               click={this.deletePersonHandler.bind(this, index)}
-              key={person.id} />
+              key={person.id}
+              changed={(event) => this.nameChangedHandler(event, person.id)} />
           )}
         </div>
     }
