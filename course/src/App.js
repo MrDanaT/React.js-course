@@ -45,7 +45,8 @@ class App extends Component {
 
   render() {
     const styling = {
-      backgroundColor: 'red',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -55,7 +56,7 @@ class App extends Component {
     let persons = null;
 
     if (this.state.showPersons) {
-      persons =
+      persons = (
         <div>
           {this.state.persons.map((person, index) =>
             <Person
@@ -65,7 +66,9 @@ class App extends Component {
               key={person.id}
               changed={(event) => this.nameChangedHandler(event, person.id)} />
           )}
-        </div>
+        </div>);
+
+      styling.backgroundColor = 'red'
     }
 
     return (
