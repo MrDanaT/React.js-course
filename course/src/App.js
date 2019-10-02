@@ -10,7 +10,8 @@ class App extends Component {
       { name: 'Manu', age: 29 },
       { name: 'Stephanie', age: 26 }
     ],
-    otherState: 'some other value'
+    otherState: 'some other value',
+    showPersons: false
   };
 
   buttonClickHandler = (newName) => {
@@ -35,6 +36,10 @@ class App extends Component {
     })
   }
 
+  togglePersonHandler = () => {
+    this.setState({ showPersons: !this.state.showPersons })
+  }
+
   render() {
     const styling = {
       backgroundColor: 'red',
@@ -48,21 +53,23 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>Paragraph!</p>
-        {/* Is een unanonymous call, kan niet efficiënt zijn! */}
+
         <button
-          onClick={() => this.buttonClickHandler('Maximilian')}
+          onClick={this.togglePersonHandler}
           style={styling}>Switch Name</button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age} />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.buttonClickHandler.bind(this, 'Max!')}
-          changed={this.nameChangedHandler}>My hobbies: Racing</Person>
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age} />
+        {this.state.showPersons ? <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age} />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            click={this.buttonClickHandler.bind(this, 'Max!')}
+            changed={this.nameChangedHandler}>My hobbies: Racing</Person>
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age} />
+        </div> : null}
       </div>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
