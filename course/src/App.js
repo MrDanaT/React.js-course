@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 
 // Stateful-, smart-, container component
 class App extends Component {
@@ -89,16 +89,18 @@ class App extends Component {
       classes.push('bold'); // classes = ['red', 'bold']
 
     return (
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p className={classes.join(' ')}>Paragraph!</p>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I'm a React App</h1>
+          <p className={classes.join(' ')}>Paragraph!</p>
 
-        <button
-          onClick={this.togglePersonHandler}
-          style={styling}>Switch Name</button>
+          <button
+            onClick={this.togglePersonHandler}
+            style={styling}>Switch Name</button>
 
-        {persons}
-      </div>
+          {persons}
+        </div>
+      </StyleRoot>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   };
