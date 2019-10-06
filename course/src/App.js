@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classes from './App.css';
 import Person from './Person/Person';
+import { ErrorBoundary } from './ErrorBoundary/ErrourBoundary';
 
 // Stateful-, smart-, container component
 class App extends Component {
@@ -53,12 +54,14 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) =>
-            <Person
-              name={person.name}
-              age={person.age}
-              click={this.deletePersonHandler.bind(this, index)}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)} />
+            <ErrorBoundary>
+              <Person
+                name={person.name}
+                age={person.age}
+                click={this.deletePersonHandler.bind(this, index)}
+                key={person.id}
+                changed={(event) => this.nameChangedHandler(event, person.id)} />
+            </ErrorBoundary>
           )}
         </div>);
       btnClass = classes.Red
