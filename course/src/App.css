@@ -2,15 +2,15 @@
   text-align: center;
 }
 
-.red{
+.red {
   color: red;
 }
 
-.bold{
+.bold {
   font-weight: bold;
 }
 
-.App button{
+.App button {
   border: 1px solid blue;
   padding: 16px;
   background-color: green;
@@ -19,7 +19,7 @@
   cursor: pointer;
 }
 
-.App button:hover{
+.App button:hover {
   background-color: lightgreen;
   color: black;
 }
@@ -28,7 +28,7 @@
   background-color: red;
 }
 
-.App button.Red:hover{
+.App button.Red:hover {
   background-color: salmon;
   color: black;
 }
