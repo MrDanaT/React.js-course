@@ -29,7 +29,8 @@ class App extends Component {
     const person = { ...this.state.persons[personIdx] };
     // const person = Object.assign({}, this.state.persons[personIdx]);
 
-    person.name = event.target.value;
+    person.name = event.event.value;
+    // person.name = event.input.value; voorbeeld van error in console.
 
     // const persons = [...this.state.persons];
     const persons = this.state.persons.slice();
